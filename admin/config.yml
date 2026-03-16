@@ -2,18 +2,40 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
-  - name: "content"
-    label: "Website Content"
+  - name: "pages"
+    label: "Website Sections"
     files:
-      - label: "Hero Section"
-        name: "hero"
-        file: "content/hero.json"
+      - label: "Home & About"
+        name: "home"
+        file: "content/home.json"
         fields:
-          - {label: "Main Title", name: "title", widget: "string"}
-          - {label: "Sub Title", name: "subtitle", widget: "text"}
-          - {label: "Main Image", name: "image", widget: "image"}
-          - {label: "Button Text", name: "btn_text", widget: "string"}
+          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - {label: "Welcome Title", name: "title", widget: "string"}
+          - {label: "Population", name: "pop", widget: "string"}
+          - {label: "Households", name: "house", widget: "string"}
+          - {label: "Pin Code", name: "pin", widget: "string"}
+
+      - label: "History Page"
+        name: "history"
+        file: "content/history.md"
+        fields:
+          - {label: "History Content", name: "body", widget: "markdown"}
+
+      - label: "Education Info"
+        name: "education"
+        file: "content/education.md"
+        fields:
+          - {label: "Education Details", name: "body", widget: "markdown"}
+
+  - name: "gallery"
+    label: "Gallery Photos"
+    folder: "content/gallery"
+    create: true
+    fields:
+      - {label: "Photo Title", name: "title", widget: "string"}
+      - {label: "Upload Photo", name: "image", widget: "image"}
+      - {label: "Caption", name: "caption", widget: "string"}
