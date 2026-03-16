@@ -1,17 +1,19 @@
 backend:
   name: git-gateway
-  repo: HluaKhiangte/chawilung # Hei hi i repository hmingin thlak rawh
   branch: main
 
-media_folder: "images" # Thlalak i upload-te heta hian a lut ang
-public_folder: "/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
-  - name: "news"
-    label: "Village News"
-    folder: "content/news"
-    create: true
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "content"
+    label: "Website Content"
+    files:
+      - label: "Hero Section"
+        name: "hero"
+        file: "content/hero.json"
+        fields:
+          - {label: "Main Title", name: "title", widget: "string"}
+          - {label: "Sub Title", name: "subtitle", widget: "text"}
+          - {label: "Main Image", name: "image", widget: "image"}
+          - {label: "Button Text", name: "btn_text", widget: "string"}
