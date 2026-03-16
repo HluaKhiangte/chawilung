@@ -18,7 +18,7 @@
             <li><a href="#history">History</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#news">News</a></li>
-            <li><a href="/admin/" class="login-btn">Admin Login</a></li>
+            <li><a href="#" onclick="netlifyIdentity.open()" class="login-btn">Admin Login</a></li>
         </ul>
     </nav>
 
@@ -35,8 +35,8 @@
             <h2>Village Overview</h2>
         </div>
         <div class="info-grid">
-            <div class="info-card"><h4>Population</h4><p id="data-pop">Loading...</p></div>
-            <div class="info-card"><h4>Households</h4><p id="data-house">Loading...</p></div>
+            <div class="info-card"><h4>Population</h4><p id="data-pop">2500+</p></div>
+            <div class="info-card"><h4>Households</h4><p id="data-house">450+</p></div>
             <div class="info-card"><h4>Pin Code</h4><p id="data-pin">796190</p></div>
             <div class="info-card"><h4>Block</h4><p>Aibawk</p></div>
         </div>
@@ -44,7 +44,7 @@
 
     <section id="history" class="container">
         <h2>Village History</h2>
-        <div id="history-body" class="markdown-body">Fetching history from admin...</div>
+        <div id="history-body" class="markdown-body">Chawilung khua hi Aizawl atanga km 40-a hla, hmun nuam tak a ni...</div>
     </section>
 
     <section id="news" class="container dark">
@@ -65,27 +65,30 @@
     </footer>
 
     <script>
-        // Fetch Admin Content
-        fetch('/content/home.json')
-            .then(res => res.json())
-            .then(data => {
-                if(data.hero_image) document.querySelector('.hero-section').style.backgroundImage = `url(${data.hero_image})`;
-                document.getElementById('hero-title').innerText = data.title;
-                document.getElementById('data-pop').innerText = data.pop;
-                document.getElementById('data-house').innerText = data.house;
-                document.getElementById('data-pin').innerText = data.pin;
-            });
-
-        // Identity setup
+        // Netlify Identity Setup
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
-                    window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
                 }
             });
         }
+
+        // Home Content Fetch (Optional: Check if file exists)
+        fetch('/content/home.json')
+            .then(res => {
+                if (!res.ok) throw new Error('File not found');
+                return res.json();
+            })
+            .then(data => {
+                if(data.hero_image) document.querySelector('.hero-section').style.backgroundImage = `url(${data.hero_image})`;
+                if(data.title) document.getElementById('hero-title').innerText = data.title;
+                if(data.pop) document.getElementById('data-pop').innerText = data.pop;
+                if(data.house) document.getElementById('data-house').innerText = data.house;
+            })
+            .catch(err => console.log("JSON file la siam loh hmel: ", err));
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 </body>
 </html>
