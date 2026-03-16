@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: your-username/your-repo-name # Hei hi i repository hmingin thlak rawh
+  branch: main
+
+media_folder: "images" # Thlalak i upload-te heta hian a lut ang
+public_folder: "/images"
+
+collections:
+  - name: "news"
+    label: "Village News"
+    folder: "content/news"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
