@@ -3,122 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chawilung | The Future Village</title>
+    <title>Chawilung Official Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="style.css">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-    <div class="cursor"></div>
-    <div class="bg-mesh"></div>
-
     <nav>
         <div class="logo">CHAWILUNG<span>.</span></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#stats">Village Info</a>
-            <a href="#about">About</a>
-        </div>
-        <a href="/admin/" class="cta-btn">Admin Login</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="/admin/" class="login-btn">Admin Login</a></li>
+        </ul>
     </nav>
 
-    <main id="home">
-        <section class="hero-advance">
-            <div class="hero-text">
-                <h1 data-aos="clip-up" id="hero-title">Loading...</h1>
-                <p data-aos="fade-up" data-aos-delay="200" id="hero-desc">
-                    Integrating cutting-edge technology with the serene soul of Mizoram.
-                </p>
-                <div class="btn-group" data-aos="fade-up" data-aos-delay="400">
-                    <button class="primary-btn">Begin Journey</button>
-                    <button class="secondary-btn">See the Map</button>
-                </div>
-            </div>
+    <header id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 id="hero-title">Welcome to Chawilung</h1>
+            <p>Experience the heart of Aibawk Block, Mizoram.</p>
+        </div>
+    </header>
 
-            <div class="hero-visual" data-aos="zoom-out-left">
-                <div class="glass-card" id="hero-img-container">
-                    <img id="hero-img" src="" style="width:100%; border-radius:15px; display:none;">
-                    <div class="card-tag">Chawilung Village</div>
-                    <div class="card-stats">
-                        <span id="stat-1">78% Renewable Energy</span>
-                        <span id="stat-2">100% Digital Literacy</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="about" class="container">
+        <div class="section-header">
+            <span>Directory</span>
+            <h2>Village Overview</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-card"><h4>Population</h4><p id="data-pop">Loading...</p></div>
+            <div class="info-card"><h4>Households</h4><p id="data-house">Loading...</p></div>
+            <div class="info-card"><h4>Pin Code</h4><p id="data-pin">796190</p></div>
+            <div class="info-card"><h4>Block</h4><p>Aibawk</p></div>
+        </div>
+    </section>
 
-        <section id="stats" class="stats-section" data-aos="fade-up">
-            <div class="section-title">
-                <span>Directory</span>
-                <h2>Village Overview</h2>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h4>Location</h4>
-                    <p>Aibawk Block, Aizawl District</p>
-                </div>
-                <div class="stat-card">
-                    <h4>Language</h4>
-                    <p>Mizo, English</p>
-                </div>
-                <div class="stat-card">
-                    <h4>Elevation</h4>
-                    <p>850m above sea level</p>
-                </div>
-                <div class="stat-card">
-                    <h4>Post Office</h4>
-                    <p>Aibawk S.O, 796190</p>
-                </div>
-            </div>
+    <section id="history" class="container">
+        <h2>Village History</h2>
+        <div id="history-body" class="markdown-body">Fetching history from admin...</div>
+    </section>
 
-            <div class="info-table-container">
-                <table class="info-table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody id="village-details">
-                        <tr><td>Tehsil / Block</td><td>Aibawk</td></tr>
-                        <tr><td>District</td><td>Aizawl</td></tr>
-                        <tr><td>State</td><td>Mizoram</td></tr>
-                        <tr><td>Assembly Constituency</td><td>Aizawl South 3</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+    <section id="news" class="container dark">
+        <h2>Latest News</h2>
+        <div class="news-box">
+            <p>Get the latest updates from Google News regarding Mizoram.</p>
+            <a href="https://news.google.com/search?q=Mizoram%20News" target="_blank" class="btn">View News →</a>
+        </div>
+    </section>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://wa.me/your-group-link">WhatsApp Group</a>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p>© 2026 Chawilung Village Committee</p>
+    </footer>
+
     <script>
-        AOS.init({ duration: 1200, easing: 'cubic-bezier(0.77, 0, 0.175, 1)' });
-
-        // Cursor Logic
-        const cursor = document.querySelector('.cursor');
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.pageX + 'px';
-            cursor.style.top = e.pageY + 'px';
-        });
-
-        // FETCH ADMIN CONTENT
-        fetch('/content/hero.json')
+        // Fetch Admin Content
+        fetch('/content/home.json')
             .then(res => res.json())
             .then(data => {
-                document.getElementById('hero-title').innerHTML = data.title || "Chawilung Village";
-                document.getElementById('hero-desc').innerText = data.subtitle || "Experience the first smart-community prototype in the hills.";
-                if(data.image) {
-                    const img = document.getElementById('hero-img');
-                    img.src = data.image;
-                    img.style.display = 'block';
-                }
-            })
-            .catch(err => console.log("Admin content not found yet."));
+                if(data.hero_image) document.querySelector('.hero-section').style.backgroundImage = `url(${data.hero_image})`;
+                document.getElementById('hero-title').innerText = data.title;
+                document.getElementById('data-pop').innerText = data.pop;
+                document.getElementById('data-house').innerText = data.house;
+                document.getElementById('data-pin').innerText = data.pin;
+            });
 
-        // Netlify Identity
+        // Identity setup
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
